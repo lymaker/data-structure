@@ -41,27 +41,36 @@ public class SequenceListTest {
     @Test
     public void addTest() {
         sequenceList.add(6);
+        // value不允许为null
+        // sequenceList.add(null);
     }
 
     @Test
     public void getTest() {
         Assertions.assertEquals(sequenceList.get(1), 2);
+        // index超出当前索引
+        // Assertions.assertEquals(sequenceList.get(5), 2);
     }
 
     @Test
     public void insertTest() {
         sequenceList.insert(2, 2);
+        // 顺序表已满
+        // sequenceList.insert(5, 5);
     }
 
     @Test
     public void removeTest() {
         sequenceList.remove(2);
+        // index超出当前索引
+        // sequenceList.remove(-1);
     }
 
     @Test
     public void indexOfTest() {
         Assertions.assertEquals(sequenceList.indexOf(1), 0);
         Assertions.assertEquals(sequenceList.indexOf(2), 1);
+        Assertions.assertEquals(sequenceList.indexOf(null), -1);
         // Error: Expected: 2, Actual: 1
         // Assertions.assertEquals(sequenceList.indexOf(3), 1);
     }

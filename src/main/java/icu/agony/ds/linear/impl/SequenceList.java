@@ -42,6 +42,7 @@ public class SequenceList<T> implements IList<T> {
 
     @Override
     public void add(T value) {
+        AssertUtil.notNUll(value, "value不允许为null");
         this.elements[this.index++] = value;
     }
 
@@ -64,6 +65,7 @@ public class SequenceList<T> implements IList<T> {
 
     @Override
     public void remove(int index) {
+        AssertUtil.isTrue(index >= 0 && index < this.index, "index超出当前索引");
         for (int i = index; i < this.index - 1; i++) {
             this.elements[i] = this.elements[i + 1];
         }
@@ -73,6 +75,9 @@ public class SequenceList<T> implements IList<T> {
     @Override
     public int indexOf(T value) {
         int index = -1;
+        if (value == null) {
+            return index;
+        }
         while (++index  < this.index) {
             if (this.elements[index].equals(value)) {
                 return index;
